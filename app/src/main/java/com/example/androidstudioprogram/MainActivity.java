@@ -1,24 +1,25 @@
 package com.example.androidstudioprogram;
 
+// Import android bundle class
 import android.os.Bundle;
 
-import androidx.activity.EdgeToEdge;
+// Import AppCompatActivity for moder android activities
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
+// Main screen of the application
 public class MainActivity extends AppCompatActivity {
 
+    // automatically called when the activity starts
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
+        // call parent activity onCreate()
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+
+        // create out custom game panel object
+        GamePanel gamePanel = new GamePanel(this);
+
+        // display GamePanel as the entire screen
+        setContentView(gamePanel);
     }
 }
